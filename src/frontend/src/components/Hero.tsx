@@ -108,7 +108,7 @@ export function Hero() {
           <div className="w-full lg:w-[47%] xl:w-[45%] lg:max-w-[560px] text-center lg:text-left z-10 py-6 lg:py-12 flex flex-col justify-center flex-shrink-0">
 
             {/* Personal Identity Block */}
-            <div className="mb-6 animate-fade-up" style={{ animationDelay: "0s" }}>
+            <div className="mb-4 lg:mb-6 animate-fade-up" style={{ animationDelay: "0s" }}>
               <div
                 className="font-display font-extrabold text-2xl lg:text-[26px] text-white tracking-tight mb-1.5"
                 style={{
@@ -134,6 +134,43 @@ export function Hero() {
                 >
                   Gaming Growth &amp; GTM
                 </span>
+              </div>
+            </div>
+
+            {/* Mobile-only Hero Image (inserted between identity label and headline) */}
+            <div
+              className="block lg:hidden relative my-4 sm:my-5 w-full animate-fade-up"
+              style={{ animationDelay: "0.05s" }}
+            >
+              {/* Ambient behind-artwork purple glow */}
+              <div
+                className="absolute inset-0 pointer-events-none flex items-center justify-center"
+                style={{ zIndex: 0 }}
+              >
+                <div
+                  className="w-[85%] h-[85%] rounded-full"
+                  style={{
+                    background:
+                      "radial-gradient(ellipse 65% 55% at 50% 50%, rgba(182, 32, 245, 0.28), transparent 70%)",
+                    filter: "blur(28px)",
+                  }}
+                />
+              </div>
+              <div className="relative z-10 w-full flex justify-center">
+                <img
+                  src="/assets/uploads/hero-collage.jpg"
+                  alt="Tarun Sardana — Gaming Growth Lead"
+                  className="w-full max-w-[270px] sm:max-w-[320px] max-h-[220px] sm:max-h-[250px] h-auto object-contain pointer-events-none"
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="sync"
+                  style={{
+                    WebkitMaskImage:
+                      "radial-gradient(ellipse 92% 90% at 50% 50%, black 60%, transparent 98%)",
+                    maskImage:
+                      "radial-gradient(ellipse 92% 90% at 50% 50%, black 60%, transparent 98%)",
+                  }}
+                />
               </div>
             </div>
 
@@ -306,9 +343,9 @@ export function Hero() {
             </div>
           </div>
 
-          {/* ══════ Right column: Integrated Portrait Artwork & Collage ══════ */}
+          {/* ══════ Right column: Integrated Portrait Artwork & Collage (Desktop only) ══════ */}
           <div
-            className="w-full lg:w-[53%] xl:w-[55%] relative flex items-center justify-center animate-fade-up"
+            className="hidden lg:flex w-full lg:w-[53%] xl:w-[55%] relative items-center justify-center animate-fade-up"
             style={{ animationDelay: "0.15s" }}
           >
             {/* Ambient behind-artwork purple glow */}
