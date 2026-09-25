@@ -1,19 +1,17 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-const driveUrl = (id: string) => `https://lh3.googleusercontent.com/d/${id}`;
-
 const carouselImages = [
   {
-    id: "1RVKMO5ixbCbECRXMZO-3BmFlsKqLjrYf",
+    src: "/assets/community/play-with-creators-1.png",
     alt: "Play with Creators – Session 1",
   },
   {
-    id: "1ardHmdgO3oFiEgEx3qcIB8D-0_0-WXzE",
+    src: "/assets/community/play-with-creators-2.png",
     alt: "Play with Creators – Session 2",
   },
   {
-    id: "15KcN-HkbU4lTcWelebvL_up2PHna6CFo",
+    src: "/assets/community/play-with-creators-3.png",
     alt: "Play with Creators – Session 3",
   },
 ];
@@ -80,12 +78,12 @@ function ImageCarousel() {
       >
         {carouselImages.map((img, i) => (
           <div
-            key={img.id}
+            key={img.src}
             className="flex-shrink-0 w-full overflow-hidden"
             style={{ scrollSnapAlign: "start" }}
           >
             <img
-              src={driveUrl(img.id)}
+              src={img.src}
               alt={img.alt}
               className="w-full h-auto block"
               style={{
@@ -116,7 +114,7 @@ function ImageCarousel() {
         {carouselImages.map((img2, i) => (
           <button
             type="button"
-            key={img2.id}
+            key={img2.src}
             onClick={() => {
               setUserInteracted(true);
               scrollTo(i);
@@ -323,7 +321,7 @@ export function CommunityGrowth() {
                 }}
               >
                 <img
-                  src={driveUrl("1oNmv2NIK-nzKjtiaIeJaEb7oOs7IKobK")}
+                  src="/assets/community/game-nights.png"
                   alt="Game Nights"
                   className="w-full h-auto object-contain block"
                 />
@@ -386,7 +384,7 @@ export function CommunityGrowth() {
                 }}
               >
                 <img
-                  src={driveUrl("1alRzgEoGNG6gYz9gZjegkPUr9hycAcDc")}
+                  src="/assets/community/wishlisting-campaigns.png"
                   alt="Wishlisting Campaigns"
                   className="w-full h-auto object-contain block"
                 />

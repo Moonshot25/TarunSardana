@@ -74,7 +74,7 @@ export function EsportsAthlete() {
           {/* Full image, no cropping, reduced to max-w-xs */}
           <div className="flex justify-center mt-6 mb-6">
             <img
-              src="https://lh3.googleusercontent.com/d/1TsP0pM2bQlp87LyJQcdUBMt27DxAjkV6"
+              src="/assets/uploads/competitive-gaming-edge.jpg"
               alt="Competitive Gaming Edge"
               className="rounded-2xl w-full max-w-xs"
               style={{

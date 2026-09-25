@@ -1,6 +1,5 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { motion } from "motion/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface ServiceItem {
   title: string;
@@ -140,36 +139,43 @@ const categories: ServiceCategory[] = [
 function FlipServiceCard({
   service,
   index,
+  isFlipped,
+  onToggle,
+  onReset,
 }: {
   service: ServiceItem;
   index: number;
+  isFlipped: boolean;
+  onToggle: () => void;
+  onReset: () => void;
 }) {
-  const [isFlipped, setIsFlipped] = useState(false);
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      onToggle();
+    }
+  };
 
   return (
     <div
       className={`flip-card h-[290px] w-full cursor-pointer select-none ${
         isFlipped ? "flipped" : ""
       }`}
-      onClick={() => setIsFlipped((prev) => !prev)}
-      onPointerEnter={() => setIsFlipped(true)}
-      onPointerLeave={() => setIsFlipped(false)}
-      onTouchStart={() => setIsFlipped((prev) => !prev)}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          setIsFlipped((prev) => !prev);
-        }
-      }}
+      onClick={onToggle}
+      onMouseLeave={onReset}
+      onKeyDown={handleKeyDown}
       tabIndex={0}
       role="button"
-      aria-label={`${service.title} - Click or hover to view details`}
+      aria-expanded={isFlipped}
+      aria-label={`${service.title} - ${
+        isFlipped ? "Flipped, showing details" : "Hover or tap to view details"
+      }`}
       data-ocid={`services.item.${index + 1}`}
     >
       <div className="flip-card-inner h-full w-full">
         {/* ── Front Side ── */}
         <div
-          className="flip-card-front overflow-hidden rounded-2xl relative"
+          className="flip-card-front rounded-2xl relative"
           style={{
             border: "1px solid rgba(182, 32, 245, 0.4)",
             boxShadow:
@@ -181,7 +187,7 @@ function FlipServiceCard({
           <img
             src={service.image}
             alt={service.title}
-            className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
+            className="absolute inset-0 w-full h-full object-cover object-center rounded-2xl transition-transform duration-700 hover:scale-105"
             style={{
               filter: "brightness(0.9) contrast(1.08)",
             }}
@@ -189,7 +195,7 @@ function FlipServiceCard({
 
           {/* Dark bottom gradient overlay for clear text readability */}
           <div
-            className="absolute inset-0 pointer-events-none"
+            className="absolute inset-0 pointer-events-none rounded-2xl"
             style={{
               background:
                 "linear-gradient(to top, rgba(5,6,17,0.95) 0%, rgba(5,6,17,0.7) 40%, rgba(5,6,17,0.15) 75%, transparent 100%)",
@@ -209,7 +215,7 @@ function FlipServiceCard({
 
         {/* ── Reverse / Back Side ── */}
         <div
-          className="flip-card-back p-5 flex flex-col justify-between overflow-hidden rounded-2xl"
+          className="flip-card-back p-5 flex flex-col justify-between rounded-2xl"
           style={{
             background:
               "linear-gradient(145deg, oklch(0.15 0.08 295), oklch(0.10 0.05 295))",
@@ -260,6 +266,27 @@ function FlipServiceCard({
 
 export function Services() {
   const titleRef = useScrollReveal();
+  const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!activeCardKey) return;
+
+    const handleOutsidePointer = (e: PointerEvent | MouseEvent | TouchEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (!target?.closest(".flip-card")) {
+        setActiveCardKey(null);
+      }
+    };
+
+    document.addEventListener("pointerdown", handleOutsidePointer);
+    return () => {
+      document.removeEventListener("pointerdown", handleOutsidePointer);
+    };
+  }, [activeCardKey]);
+
+  const handleToggleCard = (cardKey: string) => {
+    setActiveCardKey((prev) => (prev === cardKey ? null : cardKey));
+  };
 
   return (
     <section
@@ -337,13 +364,19 @@ export function Services() {
 
               {/* Two Service Cards grouped under this category */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {cat.services.map((service, serviceIdx) => (
-                  <FlipServiceCard
-                    key={service.title}
-                    service={service}
-                    index={catIdx * 2 + serviceIdx}
-                  />
-                ))}
+                {cat.services.map((service, serviceIdx) => {
+                  const cardKey = `${cat.number}-${serviceIdx}`;
+                  return (
+                    <FlipServiceCard
+                      key={service.title}
+                      service={service}
+                      index={catIdx * 2 + serviceIdx}
+                      isFlipped={activeCardKey === cardKey}
+                      onToggle={() => handleToggleCard(cardKey)}
+                      onReset={() => setActiveCardKey(null)}
+                    />
+                  );
+                })}
               </div>
             </div>
           ))}

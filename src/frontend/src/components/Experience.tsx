@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 const roles = [
   {
     company: "Playrift",
-    logo: "https://drive.google.com/thumbnail?id=13UgF1s3O6E1tgZVVfScFktUqiMnt-LiE&sz=w400",
+    logo: "/assets/community/playrift-logo.png",
     location: "Remote",
     tags: [
       "GTM Strategy",
