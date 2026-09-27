@@ -1,8 +1,12 @@
 import { InternetIdentityProvider } from "@caffeineai/core-infrastructure";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { inject } from "@vercel/analytics";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
+
+// Initialize Vercel Web Analytics
+inject();
 
 BigInt.prototype.toJSON = function () {
   return this.toString();
