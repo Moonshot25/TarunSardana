@@ -19,8 +19,8 @@ const roles = [
         bullets: [
           "Generated $50K+ in revenue with 30%+ profit margins by delivering 10+ client campaigns over 6 months, driving scalable, performance-led growth solutions for gaming studios",
           "Designed and scaled a Discord-first competitive ecosystem for ScarFall 2.0 (5M+ first-month downloads), leveraging two of India's largest gaming communities to activate 300+ teams through structured scrims, tournaments, and engagement systems that drove 60% Day 7 retention",
-          "Drove user acquisition for KiX (a casual PvP gaming app) through creators and communities, onboarding 50K+ users within a month while maintaining Day 1 retention above 30%",
-          "Supported the soft launch of Daily Rush (Bam Games), onboarding 1,100+ highly engaged players through rewarded UA partner communities during closed beta and scaling to 30K+ users through ₹200K+ Google Ads spend while maintaining Day 7 retention above 18%",
+          "Drove user acquisition for KiX through gaming creators, communities, and rewarded acquisition, acquiring 100K+ players, with 65K+ going on to play more than two games while maintaining 30%+ Day 1 retention.",
+          "Supported Daily Rush's soft launch by onboarding 1,100+ beta players through rewarded acquisition partner communities and scaling to 30K+ users through ₹200K+ Google Ads spend while maintaining Day 7 retention above 18%.",
           "Led community-driven engagement initiatives for Raftaar Run (Funwave Studio), generating 1,600+ matches through a 128-player competitive tournament and onboarding a CPA partner to drive positive-ROAS player acquisition",
           "Recruited and managed 50+ high-value playtesters across upcoming titles including Cricket All Stars (Krafton) and eCricket (LightFury), generating structured gameplay feedback to support onboarding, engagement, and retention optimization while consulting for Lysto",
         ],

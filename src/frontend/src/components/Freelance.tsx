@@ -2,19 +2,19 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const projects = [
   {
-    client: "Kix",
+    client: "KiX",
     project: "",
     role: "User Acquisition and Retention",
     period: "May 2026 – Aug 2026",
     image: "/assets/case-studies/kix.png",
     stats: [
-      "100K+ Players Reached",
+      "100K+ Players Acquired",
       "65K+ Multi-Game Players",
       "30%+ D1 Retention",
     ],
     bullets: [
       "Built a multi-channel acquisition engine through creators, gaming communities and rewarded acquisition.",
-      "Acquired 100K+ players, with 65K+ going on to play 2 or more games.",
+      "Acquired 100K+ players, with 65K+ going on to play more than two games.",
       "Achieved 30%+ D1 retention, doubling the client’s 15% soft-launch KPI.",
     ],
   },
@@ -43,10 +43,15 @@ const projects = [
     role: "Growth & Retention",
     period: "Jan 2026 – Mar 2026",
     image: "/assets/case-studies/daily-rush.png",
-    stats: ["1,200+ Players Level 10", "25K+ Users", "₹100K+ Ad Spend"],
+    stats: [
+      "30K+ Users Acquired",
+      "₹200K+ Google Ads Spend",
+      "1,100+ Beta Players",
+      "18%+ D7 Retention",
+    ],
     bullets: [
-      "Drove rewarded UA via partner communities → 1,200+ players reached Level 10",
-      "Managed ₹100K+ ad spend → acquired 25K+ users while maintaining D7 retention KPIs",
+      "Onboarded 1,100+ beta players through rewarded acquisition partner communities during soft launch.",
+      "Scaled to 30K+ users acquired through ₹200K+ Google Ads spend while maintaining 18%+ Day 7 retention.",
     ],
   },
   {
